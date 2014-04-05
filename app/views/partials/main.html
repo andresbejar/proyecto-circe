@@ -8,7 +8,9 @@
         postales repetidas que tengas, las que necesitas y las que tus amigos necesitan.
         Intercambia exactamente las que necesites y ¡llena el álbum antes que empieze la copa!
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="/login">Login</a>
+  <p>
+<a class="btn btn-lg btn-success" ng-click="login()" ng-hide="loginStatus.status == 'connected'">Login with Facebook</a>
+<!-- <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button> -->
   <a class="btn btn-lg btn-success" ng-href="/signup">Sign up</a></p>
 </div>
 
@@ -20,5 +22,5 @@
 </div> -->
 
 <div class="footer">
-  <p>Footer</p>
+  <p>Todos los derechos reservados. Ver About por detalles</p>
 </div>

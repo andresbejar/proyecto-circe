@@ -4,9 +4,10 @@ angular.module('circeApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ezfb'
 ])
-  .config(function ($routeProvider, $locationProvider, $httpProvider) {
+  .config(function ($routeProvider, $locationProvider, $httpProvider, ezfbProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'partials/main',
@@ -45,6 +46,14 @@ angular.module('circeApp', [
         }
       };
     }]);
+
+    ezfbProvider.setInitParams({
+	appId: '304555096364624',
+	status: true,
+	cookie: true,
+	xfbml: true
+    });
+  
   })
   .run(function ($rootScope, $location, Auth) {
 
@@ -55,4 +64,5 @@ angular.module('circeApp', [
         $location.path('/login');
       }
     });
+   
   });

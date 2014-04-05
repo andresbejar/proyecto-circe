@@ -1,0 +1,28 @@
+'use strict';
+
+var app = angular.module('circeApp', ['facebook']);
+app.config(['FacebookProvider', function(FacebookProvider){
+    FacebookProvider.init('304555096364624');
+}]);
+
+app.controller('MainCtrl', ['$scope', 'Facebook', function($scope, Facebook){
+    $scope.$watch(function(){
+	return Facebook.isReady();
+    }, function(newVal){
+	$scope.facebookReady = true;
+    });
+    $scope.user = {};
+    $scope.logged = false;
+
+    $scope.tryLogin = function(){
+	Facebook.getLoginStatus(function(response){
+	    if(response.status == 'connected'){
+		$scope.logged = true;
+		$scope.me();
+	    }
+	    else{
+		$scope.login();
+	    }
+	});
+    };
+}
